@@ -1,36 +1,29 @@
-# textbringer-ghost_text
+# textbringer-http_client
 
-[![Gem Version](https://badge.fury.io/rb/textbringer-ghost_text.svg)](https://badge.fury.io/rb/textbringer-ghost_text)
-
-[GhostText](https://github.com/GhostText/GhostText) plugin for [Textbringer](https://github.com/shugo/textbringer).
+HTTP client plugin for [Textbringer](https://github.com/shugo/textbringer).
 
 ## Installation
 
-    $ gem install textbringer-ghost_text
-
-## Configuration
-
-```ruby
-# The host of the GhostText server.
-CONFIG[:ghost_text_host] = "127.0.0.1"
-# The port of the GhostText server.
-CONFIG[:ghost_text_port] = 4001
-```
+    $ gem install textbringer-http_client
 
 ## Usage
 
-Type `M-x ghost_text_start` to start the server.
+Type `M-x send_http_request` to send an HTTP request, for example, in the following buffer:
 
-## Development
+```
+POST http://localhost:4000/graphql
+Content-Type: application/json
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+{
+  "query":"query todo{ todo(id: 1) { id content } }",
+  "variables":null,
+  "operationName":"todo"
+}
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/shugo/textbringer-ghost_text.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/shugo/textbringer-http_client.
 
 ## License
 
