@@ -1,4 +1,4 @@
-# frozen_string_literal: true
+#l frozen_string_literal: true
 
 require "uri"
 require "net/http"
@@ -23,8 +23,8 @@ define_command(:send_http_request,
         buffer.read_only_edit do
           buffer.clear
           buffer.insert("HTTP/#{res.http_version} #{res.code} #{res.message}\n")
-          res.each_header do |name, val|
-            buffer.insert("#{name.capitalize}: #{val}\n")
+          res.canonical_each do |name, val|
+            buffer.insert("#{name}: #{val}\n")
           end
           buffer.insert("\n")
           buffer.insert(res.body)
